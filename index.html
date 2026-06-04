@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صدقة جارية | بنية نجاح علالي</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+
+        :root {
+            --primary-color: #2a6f97;
+            --secondary-color: #014f86;
+            --accent-color: #2a9d8f;
+            --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #e0e7ff 100%);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-color: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 24px 16px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 32px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        header h1 {
+            color: var(--secondary-color);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #64748b;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        header b {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* كارت المسبحة المطور */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .dhikr-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        /* حاوية العداد الدائرية */
+        .counter-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .progress-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring__circle {
+            stroke-dasharray: 502;
+            stroke-dashoffset: 502;
+            transition: stroke-dashoffset 0.1s linear;
+            stroke-linecap: round;
+        }
+
+        .counter-display {
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            user-select: none;
+            z-index: 2;
+            transition: transform 0.1s ease;
+        }
+
+        .btn-pray {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 16px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(42, 111, 151, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .btn-pray:active {
+            transform: scale(0.98);
+            background: var(--secondary-color);
+        }
+
+        /* كارت الأدعية */
+        .dhikr-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .dhikr-section h2 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 16px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .dhikr-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .dhikr-item {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            line-height: 1.6;
+            font-size: 1.05rem;
+            color: #475569;
+        }
+
+        .dhikr-item:last-child {
+            border-bottom: none;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 24px 0 8px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* تأثيرات الاهتزاز والظهور */
+        .pulse {
+            animation: pulseAnim 0.2s ease-in-out;
+        }
+
+        @keyframes pulseAnim {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>موقع الأجر والثواب</h1>
+        <p>صدقة جارية بنية التوفيق والنجاح لـ <b>(علالي)</b> في السادس الإعدادي</p>
+    </header>
+
+    <div class="container">
+        <!-- قسم المسبحة الإلكترونية -->
+        <div class="card">
+            <div class="dhikr-title" id="dhikr-text">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</div>
+            
+            <div class="counter-container" onclick="incrementCounter()">
+                <svg class="progress-ring" width="180" height="180">
+                    <!-- الدائرة الخلفية الرمادية -->
+                    <circle stroke="rgba(0,0,0,0.05)" stroke-width="8" fill="transparent" r="80" cx="90" cy="90"/>
+                    <!-- دائرة التقدم الملونة -->
+                    <circle class="progress-ring__circle" id="progress-circle" stroke="var(--accent-color)" stroke-width="8" fill="transparent" r="80" cx="90" cy="90"/>
+                </svg>
+                <div class="counter-display" id="counter">0</div>
+            </div>
+
+            <button class="btn-pray" onclick="incrementCounter()">اضغط للتسبيح</button>
+        </div>
+
+        <!-- قسم الأدعية -->
+        <div class="dhikr-section">
+            <h2>أدعية لطلب التوفيق والنجاح</h2>
+            <div class="dhikr-item">
+                "اللهم وفّق علالي في دراسته، وافتح عليه فتوح العارفين، ويسّر له كل عسير، واجعل نهاية جهده فرحاً ونجاحاً باهراً."
+            </div>
+            <div class="dhikr-item">
+                "اللهم ذكّره ما نسي، وعلّمه ما جهل، واكتب له أعلى الدرجات والمعدلات العالية."
+            </div>
+            <div class="dhikr-item">
+                "لا إله إلا أنت سبحانك إني كنت من الظالمين.. اللهم يا جامع الناس ليوم لا ريب فيه اجمع بينه وبين توفيقه وتيسيرك."
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>الدال على الخير كفاعله | نسألكم الدعاء له</p>
+    </footer>
+
+    <script>
+        const dhikrs = [
+            "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+            "أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ وَأَتُوبُ إِلَيْهِ",
+            "اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ",
+            "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+            "سُبْحَانَ اللَّهِ الْعَظِيمِ"
+        ];
+        
+        let currentDhikrIndex = 0;
+        let count = 0;
+        
+        const counterElement = document.getElementById('counter');
+        const dhikrTextElement = document.getElementById('dhikr-text');
+        const circle = document.getElementById('progress-circle');
+        const radius = circle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+
+        // إعداد الدائرة
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        circle.style.strokeDashoffset = circumference;
+
+        function setProgress(percent) {
+            const offset = circumference - (percent / 33) * circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+
+        function incrementCounter() {
+            count++;
+            
+            // إضافة تأثير حركة خفيفة للرقم عند الضغط
+            counterElement.classList.add('pulse');
+            setTimeout(() => counterElement.classList.remove('pulse'), 200);
+
+            if (count >= 33) {
+                // تصفير تلقائي والانتقال للذكر القادم
+                count = 0;
+                setProgress(0);
+                counterElement.innerText = count;
+                
+                // تغيير الذكر بحركة سلسة
+                dhikrTextElement.style.opacity = 0;
+                setTimeout(() => {
+                    currentDhikrIndex = (currentDhikrIndex + 1) % dhikrs.length;
+                    dhikrTextElement.innerText = dhikrs[currentDhikrIndex];
+                    dhikrTextElement.style.opacity = 1;
+                }, 200);
+            } else {
+                counterElement.innerText = count;
+                setProgress(count);
+            }
+        }
+    </script>
+</body>
+</html>
