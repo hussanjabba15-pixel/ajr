@@ -32,27 +32,25 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 24px 16px;
+            padding: 24px 16px 80px 16px; /* مساحة في الأسفل لشريط التنقل */
             overflow-x: hidden;
-            position: relative;
         }
 
         header {
             text-align: center;
-            margin-bottom: 32px;
-            animation: fadeIn 1s ease-out;
+            margin-bottom: 24px;
         }
 
         header h1 {
             color: var(--secondary-color);
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         header p {
             color: #64748b;
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1.5;
         }
 
@@ -64,12 +62,20 @@
         .container {
             width: 100%;
             max-width: 480px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
         }
 
-        /* كارت المسبحة المطور */
+        /* التحكم في ظهور الصفحات */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .page.active {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -79,26 +85,24 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.6);
-            animation: slideUp 0.6s ease-out;
         }
 
+        /* صفحة التسبيح */
         .dhikr-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 500;
             color: var(--secondary-color);
             min-height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
-            transition: all 0.3s ease;
+            margin-bottom: 20px;
         }
 
-        /* حاوية العداد الدائرية */
         .counter-container {
             position: relative;
-            width: 180px;
-            height: 180px;
+            width: 170px;
+            height: 170px;
             margin: 0 auto 24px;
             display: flex;
             align-items: center;
@@ -121,12 +125,11 @@
         }
 
         .counter-display {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             font-weight: 700;
             color: var(--primary-color);
             user-select: none;
             z-index: 2;
-            transition: transform 0.1s ease;
         }
 
         .btn-pray {
@@ -140,50 +143,105 @@
             cursor: pointer;
             width: 100%;
             box-shadow: 0 4px 12px rgba(42, 111, 151, 0.2);
-            transition: all 0.2s ease;
         }
 
-        .btn-pray:active {
-            transform: scale(0.98);
-            background: var(--secondary-color);
+        /* صفحة القرآن الكريم */
+        .quran-card {
+            text-align: center;
         }
 
-        /* كارت الأدعية */
+        .surah-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+
+        .surah-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .quran-text {
+            font-size: 1.35rem;
+            line-height: 2.2;
+            color: #1e293b;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 12px;
+        }
+
+        /* شريط التنقل السفلي المطور */
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 100;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            height: 100%;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            gap: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-item.active {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .nav-icon {
+            font-size: 1.3rem;
+        }
+
+        /* كارت الأدعية المشترك */
         .dhikr-section {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 24px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.6);
-            animation: slideUp 0.8s ease-out;
         }
 
         .dhikr-section h2 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--secondary-color);
-            margin-bottom: 16px;
-            position: relative;
-            padding-bottom: 8px;
-        }
-
-        .dhikr-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent-color);
-            border-radius: 2px;
+            margin-bottom: 12px;
         }
 
         .dhikr-item {
-            padding: 14px 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(0,0,0,0.04);
             line-height: 1.6;
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: #475569;
         }
 
@@ -191,34 +249,9 @@
             border-bottom: none;
         }
 
-        footer {
-            margin-top: auto;
-            padding: 24px 0 8px;
-            text-align: center;
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        /* تأثيرات الاهتزاز والظهور */
-        .pulse {
-            animation: pulseAnim 0.2s ease-in-out;
-        }
-
-        @keyframes pulseAnim {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .pulse { animation: pulseAnim 0.2s ease-in-out; }
+        @keyframes pulseAnim { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -229,49 +262,72 @@
     </header>
 
     <div class="container">
-        <!-- قسم المسبحة الإلكترونية -->
-        <div class="card">
-            <div class="dhikr-title" id="dhikr-text">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</div>
-            
-            <div class="counter-container" onclick="incrementCounter()">
-                <svg class="progress-ring" width="180" height="180">
-                    <!-- الدائرة الخلفية الرمادية -->
-                    <circle stroke="rgba(0,0,0,0.05)" stroke-width="8" fill="transparent" r="80" cx="90" cy="90"/>
-                    <!-- دائرة التقدم الملونة -->
-                    <circle class="progress-ring__circle" id="progress-circle" stroke="var(--accent-color)" stroke-width="8" fill="transparent" r="80" cx="90" cy="90"/>
-                </svg>
-                <div class="counter-display" id="counter">0</div>
-            </div>
+        
+        <!-- ================= صفحة التسبيح ================= -->
+        <div id="tasbeeh-page" class="page active">
+            <div class="card">
+                <div class="dhikr-title" id="dhikr-text">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</div>
+                
+                <div class="counter-container" onclick="incrementCounter()">
+                    <svg class="progress-ring" width="170" height="170">
+                        <circle stroke="rgba(0,0,0,0.04)" stroke-width="6" fill="transparent" r="75" cx="85" cy="85"/>
+                        <circle class="progress-ring__circle" id="progress-circle" stroke="var(--accent-color)" stroke-width="6" fill="transparent" r="75" cx="85" cy="85"/>
+                    </svg>
+                    <div class="counter-display" id="counter">0</div>
+                </div>
 
-            <button class="btn-pray" onclick="incrementCounter()">اضغط للتسبيح</button>
+                <button class="btn-pray" onclick="incrementCounter()">اضغط للتسبيح</button>
+            </div>
         </div>
 
-        <!-- قسم الأدعية -->
-        <div class="dhikr-section">
-            <h2>أدعية لطلب التوفيق والنجاح</h2>
-            <div class="dhikr-item">
-                "اللهم وفّق علالي في دراسته، وافتح عليه فتوح العارفين، ويسّر له كل عسير، واجعل نهاية جهده فرحاً ونجاحاً باهراً."
-            </div>
-            <div class="dhikr-item">
-                "اللهم ذكّره ما نسي، وعلّمه ما جهل، واكتب له أعلى الدرجات والمعدلات العالية."
-            </div>
-            <div class="dhikr-item">
-                "لا إله إلا أنت سبحانك إني كنت من الظالمين.. اللهم يا جامع الناس ليوم لا ريب فيه اجمع بينه وبين توفيقه وتيسيرك."
+        <!-- ================= صفحة القرآن الكريم ================= -->
+        <div id="quran-page" class="page">
+            <div class="card quran-card">
+                <div class="surah-title">سُورة الشَّرْح</div>
+                <div class="surah-desc">بنية شرح الصدر وتيسير الامتحانات والتوفيق</div>
+                
+                <div class="quran-text">
+                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ <br>
+                    أَلَمْ نَشْرَحْ لَكَ صَدْرَكَ ﴿١﴾ وَوَضَعْنَا عَنْكَ وِزْرَكَ ﴿٢﴾ الَّذِي أَنْقَضَ ظَهْرَكَ ﴿٣﴾ وَرَفَعْنَا لَكَ ذِكْرَكَ ﴿٤﴾ فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ﴿٥﴾ إِنَّ مَعَ الْعُسْرِ يُسْرًا ﴿٦﴾ فَإِذَا فَرَغْتَ فَانْصَبْ ﴿٧﴾ وَإِلَىٰ رَبِّكَ فَارْغَبْ ﴿٨﴾
+                </div>
+
+                <!-- صوت السورة مباشر من سيرفر تلاوات موثوق بصوت الشيخ ماهر المعيقلي -->
+                <audio controls>
+                    <source src="https://server12.mp3quran.net/maher/094.mp3" type="audio/mpeg">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
             </div>
         </div>
+
+        <!-- قسم الأدعية المشترك (يظهر دائماً أسفل الصفحتين لزيادة الأجر) -->
+        <div class="dhikr-section" style="margin-top: 20px;">
+            <h2>أدعية طلب التوفيق</h2>
+            <div class="dhikr-item">"اللهم وفّق علالي، وافتح عليه فتوح العارفين، واجعل نهاية جهده فرحاً ونجاحاً باهراً بمعدل عالٍ."</div>
+            <div class="dhikr-item">"اللهم ذكّره ما نسي، وعلّمه ما جهل، ويسّر له كل عسير."</div>
+        </div>
+
     </div>
 
-    <footer>
-        <p>الدال على الخير كفاعله | نسألكم الدعاء له</p>
-    </footer>
+    <!-- شريط التنقل السفلي المطور (Tabs) -->
+    <nav class="nav-bar">
+        <div class="nav-item active" id="tab-tasbeeh" onclick="switchPage('tasbeeh')">
+            <span class="nav-icon">📿</span>
+            <span>المسبحة</span>
+        </div>
+        <div class="nav-item" id="tab-quran" onclick="switchPage('quran')">
+            <span class="nav-icon">📖</span>
+            <span>القرآن الكريم</span>
+        </div>
+    </nav>
 
     <script>
+        // مصفوفة الأذكار
         const dhikrs = [
             "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
             "أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ وَأَتُوبُ إِلَيْهِ",
             "اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ",
             "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
-            "سُبْحَانَ اللَّهِ الْعَظِيمِ"
+            "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ ، سُبْحَانَ اللَّهِ الْعَظِيمِ"
         ];
         
         let currentDhikrIndex = 0;
@@ -283,7 +339,6 @@
         const radius = circle.r.baseVal.value;
         const circumference = radius * 2 * Math.PI;
 
-        // إعداد الدائرة
         circle.style.strokeDasharray = `${circumference} ${circumference}`;
         circle.style.strokeDashoffset = circumference;
 
@@ -292,20 +347,18 @@
             circle.style.strokeDashoffset = offset;
         }
 
+        // دالة العداد والتصفير التلقائي عند 33
         function incrementCounter() {
             count++;
             
-            // إضافة تأثير حركة خفيفة للرقم عند الضغط
             counterElement.classList.add('pulse');
             setTimeout(() => counterElement.classList.remove('pulse'), 200);
 
             if (count >= 33) {
-                // تصفير تلقائي والانتقال للذكر القادم
                 count = 0;
                 setProgress(0);
                 counterElement.innerText = count;
                 
-                // تغيير الذكر بحركة سلسة
                 dhikrTextElement.style.opacity = 0;
                 setTimeout(() => {
                     currentDhikrIndex = (currentDhikrIndex + 1) % dhikrs.length;
@@ -315,6 +368,26 @@
             } else {
                 counterElement.innerText = count;
                 setProgress(count);
+            }
+        }
+
+        // دالة التنقل الملساء بين الصفحات
+        function switchPage(pageName) {
+            // إخفاء كافة الصفحات وإزالة النشاط من الأزرار
+            document.getElementById('tasbeeh-page').classList.remove('active');
+            document.getElementById('quran-page').classList.remove('active');
+            document.getElementById('tab-tasbeeh').classList.remove('active');
+            document.getElementById('tab-quran').classList.remove('active');
+
+            // تفعيل الصفحة والزر المختار
+            if (pageName === 'tasbeeh') {
+                document.getElementById('tasbeeh-page').classList.add('active');
+                document.getElementById('tab-tasbeeh').classList.add('active');
+            } else if (pageName === 'quran') {
+                document.getElementById('quran-page').classList.add('active');
+                document.getElementById('tab-quran').classList.add('active');
+                
+                // إيقاف مؤقت لأي صوت إذا انتقل العميل لتجنب الإزعاج (اختياري)
             }
         }
     </script>
